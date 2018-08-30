@@ -13,6 +13,9 @@ class Settings extends Migration
     public function up()
     {
         Schema::create('settings', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
+            $table->charset = 'utf8';
+            $table->collation = 'utf8_unicode_ci';
             $table->increments('id');
             $table->integer('task_complete_allowed');
             $table->integer('task_assign_allowed');

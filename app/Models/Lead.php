@@ -7,6 +7,7 @@ use Carbon;
 class Lead extends Model
 {
     protected $fillable = [
+        'type_id',
         'title',
         'description',
         'status',
@@ -19,6 +20,11 @@ class Lead extends Model
     protected $dates = ['contact_date'];
 
     protected $hidden = ['remember_token'];
+
+    public function type()
+    {
+        return $this->belongsTo(LeadType::class, 'type_id');
+    }
 
     public function user()
     {

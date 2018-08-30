@@ -29,6 +29,7 @@
 
                     <td><a href="{{ route('leads.show', $lead->id) }}">{{$lead->title}} </a></td>
                     <td>
+						@if($lead->user)
                         <div class="popoverOption"
                              rel="popover"
                              data-placement="left"
@@ -51,6 +52,7 @@
                             <a href="{{route('users.show', $lead->user->id)}}"> {{$lead->user->name}}</a>
 
                         </div> <!--Shows users assigned to lead -->
+						@endif
                     </td>
                     <td>{{date('d, M Y, H:i', strTotime($lead->contact_date))}} </td>
                     <td>{{date('d, M Y', strTotime($lead->contact_date))}}

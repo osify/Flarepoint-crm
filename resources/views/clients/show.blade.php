@@ -45,7 +45,7 @@
                'method' => 'PATCH',
                 'url' => ['clients/updateassign', $client->id],
                 ]) !!}
-                {!! Form::select('user_assigned_id', $users, $client->user->id, ['class' => 'form-control ui search selection top right pointing search-select', 'id' => 'search-select']) !!}
+                {!! Form::select('user_assigned_id', $users, $client->user? $client->user->id : 0, ['class' => 'form-control ui search selection top right pointing search-select', 'id' => 'search-select']) !!}
                 {!! Form::submit(__('Assign new user'), ['class' => 'btn btn-primary form-control closebtn']) !!}
                 {!! Form::close() !!}
     </div>

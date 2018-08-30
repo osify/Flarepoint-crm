@@ -1,5 +1,5 @@
 <div class="col-lg-6">
-
+@if($contact)
     <div class="profilepic"><img class="profilepicsize" src="../{{ $contact->avatar }}" /></div>
     <h1>{{ $contact->nameAndDepartment }} </h1>
 
@@ -17,4 +17,5 @@
     <!--Address-->
     <p><span class="glyphicon glyphicon-home" aria-hidden="true"></span>
         {{ $contact->address }}  </p>
+@endif
 </div>

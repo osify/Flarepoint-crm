@@ -8,6 +8,7 @@ class Client extends Model
 
     protected $fillable = [
         'name',
+        'position',
         'company_name',
         'vat',
         'email',
@@ -16,6 +17,13 @@ class Client extends Model
         'city',
         'primary_number',
         'secondary_number',
+        'additional_number',
+        'office_number',
+        'website',
+        'total_staffs',
+        'latitude',
+        'longitude',
+        'remark',
         'industry_id',
         'company_type',
         'user_id'];

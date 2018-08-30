@@ -12,7 +12,11 @@ class RolesTablesSeeder extends Seeder
      */
     public function run()
     {
-        
+        if(DB::table('roles')->get()->count() != 0) {
+            echo "Roles existed!\n";
+            return;
+        }
+
         $adminRole = new Role;
         $adminRole->display_name = 'Administrator';
         $adminRole->name = 'administrator';

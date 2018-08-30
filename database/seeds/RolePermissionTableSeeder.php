@@ -12,6 +12,10 @@ class RolePermissionTableSeeder extends Seeder
      */
     public function run()
     {
+        if(DB::table('permission_role')->get()->count() != 0) {
+            echo "Permission Roles existed!\n";
+            return;
+        }
         /**
          * ADMIN ROLES
          *

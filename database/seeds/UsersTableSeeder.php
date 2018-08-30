@@ -12,9 +12,12 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        
+        if(DB::table('users')->get()->count() != 0) {
+            echo "Users existed!\n";
+            return;
+        }
 
-        \DB::table('users')->delete();
+        //\DB::table('users')->delete();
         
         \DB::table('users')->insert(array (
             0 =>

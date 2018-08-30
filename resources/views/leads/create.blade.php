@@ -21,16 +21,26 @@
 
     <div class="form-inline">
         <div class="form-group col-lg-3 removeleft">
+            {!! Form::label('lead type', 'LeadType:', ['class' => 'control-label']) !!}
+            {!!
+                Form::select('type_id',
+                $types,
+                null,
+                ['class' => 'form-control ui search selection top right pointing search-select',
+                'id' => 'search-select'])
+            !!}
+        </div>
+        <div class="form-group col-lg-3 removeleft">
             {!! Form::label('status', __('Status'), ['class' => 'control-label']) !!}
             {!! Form::select('status', array(
             '1' => 'Contact Client', '2' => 'Completed'), null, ['class' => 'form-control'] )
          !!}
         </div>
-        <div class="form-group col-lg-4 removeleft">
+        <div class="form-group col-lg-3 removeleft">
             {!! Form::label('contact_date', __('Deadline'), ['class' => 'control-label']) !!}
             {!! Form::date('contact_date', \Carbon\Carbon::now()->addDays(7), ['class' => 'form-control']) !!}
         </div>
-        <div class="form-group col-lg-5 removeleft removeright">
+        <div class="form-group col-lg-3 removeleft removeright">
             {!! Form::label('contact_time', __('Time'), ['class' => 'control-label']) !!}
             {!! Form::time('contact_time', '11:00', ['class' => 'form-control']) !!}
         </div>

@@ -27,6 +27,7 @@
 
                     <td><a href="{{ route('tasks.show', $task->id) }}">{{$task->title}} </a></td>
                     <td>
+						@if($task->user)
                         <div class="popoverOption"
                              rel="popover"
                              data-placement="left"
@@ -49,6 +50,7 @@
                             <a href="{{route('users.show', $task->user->id)}}"> {{$task->user->name}}</a>
 
                         </div> <!--Shows users assigned to task -->
+						@endif
                     </td>
                     <td>{{date('d, M Y, H:i', strTotime($task->created_at))}}  </td>
                     <td>{{date('d, M Y', strTotime($task->deadline))}}

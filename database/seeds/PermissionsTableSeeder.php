@@ -12,6 +12,11 @@ class PermissionsTableSeeder extends Seeder
      */
     public function run()
     {
+
+        if(DB::table('permissions')->get()->count() != 0) {
+            echo "Permissions existed!\n";
+            return;
+        }
         /**
          * User Permissions
          */

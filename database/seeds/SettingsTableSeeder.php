@@ -12,10 +12,14 @@ class SettingsTableSeeder extends Seeder
      */
     public function run()
     {
-        
 
-        \DB::table('settings')->delete();
-        
+
+        //\DB::table('settings')->delete();
+        if(DB::table('settings')->get()->count() != 0) {
+            echo "Settings existed!\n";
+            return;
+        }
+
         \DB::table('settings')->insert(array (
             0 =>
             array (

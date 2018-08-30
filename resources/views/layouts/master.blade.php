@@ -147,6 +147,13 @@ $('body').click(function(e) {
                        class="list-group-item childlist">{{ __('New Department') }}</a>
                 @endif
             </div>
+            <a href="#reports" class=" list-group-item" data-toggle="collapse" data-parent="#MainMenu"><i
+                    class="sidebar-icon glyphicon glyphicon-stats"></i><span id="menu-txt">{{ __('Reports') }}</span>
+                <i class="ion-chevron-up  arrow-up sidebar-arrow"></i></a>
+            <div class="collapse" id="reports">
+                <a href="{{ route('reports.index')}}"
+                   class="list-group-item childlist">{{ __('Report') }}</a>
+            </div>
 
             @if(Entrust::hasRole('administrator'))
                 <a href="#settings" class=" list-group-item" data-toggle="collapse" data-parent="#MainMenu"><i

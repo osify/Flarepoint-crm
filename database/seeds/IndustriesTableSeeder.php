@@ -14,8 +14,11 @@ class IndustriesTableSeeder extends Seeder
     {
         
 
-        \DB::table('industries')->delete();
-        
+        //\DB::table('industries')->delete();
+        if(DB::table('industries')->get()->count() != 0) {
+            echo "Industries existed!\n";
+            return;
+        }
         \DB::table('industries')->insert(array (
             0 =>
             array (

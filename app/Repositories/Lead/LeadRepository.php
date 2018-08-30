@@ -2,6 +2,7 @@
 namespace App\Repositories\Lead;
 
 use App\Models\Lead;
+use App\Models\LeadType;
 use Notifynder;
 use Carbon;
 use DB;
@@ -110,6 +111,14 @@ class LeadRepository implements LeadRepositoryContract
     public function leads()
     {
         return Lead::all()->count();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function listAllLeadTypes()
+    {
+        return LeadType::pluck('name', 'id');
     }
 
     /**

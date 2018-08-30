@@ -14,6 +14,7 @@ interface LeadRepositoryContract
     public function updateAssign($id, $requestData);
 
     public function leads();
+    public function listAllLeadTypes();
 
     public function allCompletedLeads();
 

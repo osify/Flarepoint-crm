@@ -1,6 +1,11 @@
 <div class="col-md-6">
 
-    <h1 class="moveup">{{$client->name}} ({{$client->company_name}})</h1>
+    <h1 class="moveup">
+      {{$client->name}} ({{$client->position != "" ?$client->position .", " :""}}{{$client->company_name}})
+      @if(Entrust::can('client-update'))
+        <a href="{{ route('clients.edit', $client->id) }}" style="font-size: 2rem;"><i class="glyphicon glyphicon-pencil"></i></a>
+      @endif
+    </h1>
 
     <!--Client info leftside-->
     <div class="contactleft">
@@ -14,13 +19,19 @@
                 <!--Work Phone-->
         <p><span class="glyphicon glyphicon-headphones" aria-hidden="true" data-toggle="tooltip"
                  title=" {{ __('Primary number') }} " data-placement="left"> </span>
-            <a href="tel:{{$client->work_number}}">{{$client->primary_number}}</a></p>
+            <a href="tel:{{$client->primary_number}}">{{$client->primary_number}}</a></p>
         @endif
         @if($client->secondary_number != "")
                 <!--Secondary Phone-->
         <p><span class="glyphicon glyphicon-phone" aria-hidden="true" data-toggle="tooltip"
                  title="{{ __('Secondary number') }}" data-placement="left"> </span>
             <a href="tel:{{$client->secondary_number}}">{{$client->secondary_number}}</a></p>
+        @endif
+        @if($client->additional_number != "")
+          <!--Additional Phones-->
+            <p><span class="glyphicon glyphicon-phone" aria-hidden="true" data-toggle="tooltip"
+                     title="{{ __('Additional number') }}" data-placement="left"> </span>
+              <a href="tel:{{$client->additional_number}}">{{$client->additional_number}}</a></p>
         @endif
         @if($client->address || $client->zipcode || $client->city != "")
                 <!--Address-->
@@ -29,6 +40,12 @@
             <br/>{{$client->zipcode}} {{$client->city}}
         </p>
         @endif
+        @if($client->latitude != "" && $client->longitude != "")
+          <!--Google Map-->
+            <p><span class="glyphicon glyphicon-map-marker" aria-hidden="true" data-toggle="tooltip"
+                     title="{{ __('Google Map') }}" data-placement="left"> </span>
+              <a href="{{'https://www.google.com/maps/@' . $client->latitude}},{{$client->longitude}},15z" target="_blank">{{ __('Google Map') }}</a></p>
+          @endif
     </div>
 
     <!--Client info leftside END-->
@@ -54,6 +71,18 @@
         <p><span class="glyphicon glyphicon-globe" aria-hidden="true" data-toggle="tooltip"
                  title="{{ __('Company type') }}" data-placement="left"> </span>
             {{$client->company_type}}</p>
+        @endif
+        @if($client->office_number != "")
+          <!--Office Phones-->
+            <p><span class="glyphicon glyphicon-phone" aria-hidden="true" data-toggle="tooltip"
+                     title="{{ __('Office number') }}" data-placement="left"> </span>
+              <a href="tel:{{$client->office_number}}">{{$client->office_number}}</a></p>
+        @endif
+        @if($client->website != "")
+          <!--Website-->
+            <p><span class="glyphicon glyphicon-cloud" aria-hidden="true" data-toggle="tooltip"
+                     title="{{ __('website') }}" data-placement="left"> </span>
+              <a href="{{(empty(parse_url($client->website)['scheme'])? 'http://' : '') . $client->website}}" target="_blank">{{$client->website}}</a></p>
         @endif
     </div>
 </div>
